@@ -9,6 +9,8 @@
 3. `powershell -ExecutionPolicy Bypass -File .\import.ps1`
    - `~/.claude` 의 `agents`, `skills`, `CLAUDE.md` 를 이 repo 내용으로 바꾼다. 기존 것은 `*.bak-<시각>` 으로 남는다.
    - 대상이 junction·심볼릭 링크면 건너뛴다(링크 너머 다른 repo 를 덮어쓰지 않도록).
+   - repo 위치를 `~/.claude/claude-config-path.txt` 에 기록한다(전역 CLAUDE.md 의 기록 규칙이 이 경로를 쓴다). 어디에 clone 해도 된다.
+   - 이 repo 의 로컬 git `user.email` 을 `qwertys1347@gmail.com` 으로 설정한다.
    - 이어서 `plugins.ps1` 로 플러그인을 설치한다.
 4. Claude Code 재시작 → `/agents`, `/skills`, `/plugin` 으로 확인
 

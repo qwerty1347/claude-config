@@ -20,5 +20,11 @@ foreach ($name in 'agents', 'skills', 'CLAUDE.md') {
     Write-Host "imported: $name"
 }
 
+# global CLAUDE.md finds this repo through this file (clone location differs per PC)
+Set-Content (Join-Path $dst 'claude-config-path.txt') $PSScriptRoot -Encoding ascii
+Write-Host "repo path: $PSScriptRoot"
+# commits to this repo must use this account (repo-local, global git config untouched)
+git -C $PSScriptRoot config user.email 'qwertys1347@gmail.com'
+
 & (Join-Path $PSScriptRoot 'plugins.ps1')
 Write-Host "done. Restart Claude Code."
