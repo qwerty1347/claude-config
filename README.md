@@ -16,6 +16,18 @@
 
 업데이트: `git pull` 후 3번부터 다시.
 
+### 새 PC 에서 다르게 동작하는 것
+
+| 대상 | 이유 | 결과·대처 |
+|---|---|---|
+| `api-doc` 스킬 | 명세서를 harness repo 의 `docs/` 에 모으게 돼 있는데 새 PC 에는 harness 가 없다 | 에러 없이 `~/.claude/docs/skills/api-doc/output` 에 저장된다 |
+| `security-review` 스킬 | 동봉된 `pylib/lxml` 이 Python 3.12(win_amd64) 전용 빌드 | 3.12 가 아니면 첫 실행 때 `pylib/` 에 python-docx 를 다시 설치한다(네트워크 필요) |
+| `ui-ux-pro-max` 플러그인 | 검색 스크립트가 Python 3 필요 | Python 이 없으면 검색이 안 된다 |
+| `web-design-guidelines` 스킬 | 실행마다 GitHub 에서 규칙을 받아온다 | GitHub 가 막힌 망에서는 실패한다 |
+| 플러그인 설치(`plugins.ps1`) | GitHub 마켓플레이스에서 받는다 | GitHub 가 막힌 망에서는 실패한다 |
+
+동기화하지 않는 것: 로그인 정보, 허용 규칙(`settings.local.json`), 메모리, Orca 훅·statusLine(Orca 설치 시 Orca 가 넣는다), 프로젝트 스킬(`project-skills/` 에서 복사).
+
 ## 이 PC 에서 바꾼 뒤
 
 `powershell -ExecutionPolicy Bypass -File .\export.ps1` → 아래 표·변경 이력 갱신 → 커밋.
