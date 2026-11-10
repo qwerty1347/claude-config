@@ -20,6 +20,7 @@
 5. 커밋한다(계정 규칙은 아래). 커밋 메시지는 이력에 적은 한 줄을 그대로 쓴다. push 는 요청받을 때만 한다.
 
 대상: `~/.claude/agents`, `~/.claude/skills`(harness junction), 플러그인. 프로젝트 `.claude/` 안의 에이전트·스킬은 대상이 아니다.
+repo 의 `project-skills/`(프로젝트에 복사해 쓰는 스킬 원본, 예: fastapi)는 export 대상이 아니므로 직접 갱신하고 README 「프로젝트 스킬」에 적는다.
 
 ## claude-config 저장소 커밋 계정
 

@@ -26,6 +26,7 @@
 | `agents/` | `~/.claude/agents` 전체 |
 | `skills/` | `~/.claude/skills` 전체 (`synced`, `__pycache__` 제외) |
 | `CLAUDE.md` | 전역 `~/.claude/CLAUDE.md` 복사본 |
+| `project-skills/` | 프로젝트에 복사해 쓰는 스킬 원본 (전역 설치 안 함, export 대상 아님) |
 | `plugins.ps1` | 플러그인·마켓플레이스 목록(설치 명령) |
 | `export.ps1` / `import.ps1` | 이 PC → repo / repo → 새 PC |
 
@@ -40,7 +41,7 @@
 | `ui-designer` | 본문 174줄 → 30줄(없는 context-manager 프로토콜 제거, 기존 토큰·컴포넌트 우선). `skills:` 에 `frontend-design:frontend-design`, `emil-design-eng` |
 | `fastapi-developer` | 본문 287줄 → 32줄(공식 FastAPI 문서 우선). `skills:` 에 `fastapi` |
 
-- `fastapi` 스킬은 전역이 아니라 프로젝트 스킬(ai-wish, domeggook-ax 의 `.claude/skills/fastapi`)이라 그 밖에서는 미리 로드가 건너뛰어진다.
+- `fastapi` 스킬은 전역이 아니라 프로젝트 스킬이라(아래 「프로젝트 스킬」) 그 프로젝트 밖에서는 미리 로드가 건너뛰어진다.
 - `skills:` 는 YAML 리스트로 쓴다. `skills: a, b` 쉼표 형식은 인식되지 않았다.
 
 ### 직접 만든 것
@@ -65,6 +66,19 @@ agent-installer, agent-organizer, ai-writing-auditor, api-documenter, architect-
 
 외부 스킬은 자동 업데이트되지 않는다. 원본 repo 를 다시 받아 `~/.claude/skills/<이름>` 을 덮어쓴 뒤 export.
 
+## 프로젝트 스킬 (`project-skills/`, 전역 설치 안 함)
+
+`import.ps1` 은 이 폴더를 설치하지 않는다. 필요한 프로젝트의 `.claude/skills/` 에 직접 복사해 쓴다.
+전역에 두지 않는 이유: 같은 이름의 프로젝트 스킬(프로젝트별 메모가 붙은 것)과 겹치지 않게 하려고.
+
+### fastapi
+
+- 출처: FastAPI 공식 스킬(SKILL.md + `references/` 6개: dependencies, other-tools, path-operations, pydantic, responses, streaming). 원본은 `C:\xampp\htdocs\www\projects\claude-admin\.claude\skills\fastapi`.
+- 쓰는 법: `project-skills/fastapi` 를 FastAPI 프로젝트의 `.claude/skills/fastapi` 로 복사.
+- 프로젝트마다 버전·폐쇄망 같은 제약이 다르면 SKILL.md 맨 아래에 「이 프로젝트에서 쓸 때 — 로컬 추가 메모」를 덧붙인다(공식 원문보다 우선). 예: ai-wish(폐쇄망, uv·ruff 금지, wheel 은 `pip-packages/`), domeggook-ax md_approval(0.115.12, PyMySQL 동기·`def`).
+- `fastapi-developer` 에이전트가 이 스킬을 미리 로드한다. 프로젝트에 없으면 스킬 없이 동작한다.
+- 갱신: 새 공식판을 받으면 이 폴더를 직접 덮어쓰고 커밋한다(export 가 갱신하지 않는다).
+
 ## 플러그인 (`plugins.ps1`)
 
 | 플러그인 | 포함 스킬 | 용도 |
@@ -82,6 +96,7 @@ agent-installer, agent-organizer, ai-writing-auditor, api-documenter, architect-
 
 > 2026-11-10 이전 항목은 파일 수정일·플러그인 `installedAt`·git 이력으로 복원했다(실제 작업일과 하루 이틀 다를 수 있다).
 
+- [2026-11-10] 프로젝트 스킬 원본 추가: fastapi (공식판, claude-admin 에서 복사, 전역 설치 안 함) — `project-skills/fastapi`
 - [2026-11-10] ui-designer 본문 재작성, `skills:` 에 frontend-design·emil-design-eng — `agents/ui-designer.md`
 - [2026-11-10] 플러그인 켬: frontend-design, ui-ux-pro-max — `plugins.ps1`
 - [2026-11-10] 스킬 설치: emil-design-eng, web-design-guidelines (hallmark 는 설치 후 삭제) — `skills/`
