@@ -74,14 +74,11 @@ agent-installer, agent-organizer, ai-writing-auditor, api-documenter, architect-
 | skill-creator | skill-creator | 스킬 제작 |
 | ponytail | ponytail, -audit, -debt, -gain, -help, -review | 최소 변경 모드 |
 
-## UI 작업 규칙 (ai-wish, domeggook-ax 프로젝트 CLAUDE.md)
+## UI 작업 규칙
 
-- 기존 디자인 토큰·컴포넌트를 따른다.
-- 일반 수정은 메인 세션에서 `frontend-design` 스킬 기준.
-- 새 화면·새 컴포넌트·화면 단위 개편만 `ui-designer` 에이전트.
-- MR 전 UI 검토는 `web-design-guidelines`.
+전역 `CLAUDE.md`(이 repo 의 `CLAUDE.md` 가 복사본)의 「프론트엔드 UI 작업」에 있다. 모든 프로젝트에 적용된다.
 
-## 변경 이력 (최신이 위)
+## 변경 이력
 
 > 2026-11-10 이전 항목은 파일 수정일·플러그인 `installedAt`·git 이력으로 복원했다(실제 작업일과 하루 이틀 다를 수 있다).
 
